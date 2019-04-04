@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+
+<bean id="address" class="gjb.spel.pojo.Address">
+	<property name="address" value="#{'上海'}"></property>
+	<property name="area" value="#{60.00}"></property>
+	<property name="price" value="#{T(java.lang.Math).PI*60}"></property>
+</bean>
+<bean id="person" class="gjb.spel.pojo.Person">
+	<property name="name" value='#{"张三"}'></property>
+	<property name="age" value="#{30}"></property>
+	<property name="address" value="#{address}"></property>
+	<property name="marriage" value="#{address.area>50 and address.price >100 }"></property>
+	<property name="socialStatus" value="#{address.area>50?'中小小戶型':'更高檔或更抵擋'}"></property>
+</bean>
+
+</beans>

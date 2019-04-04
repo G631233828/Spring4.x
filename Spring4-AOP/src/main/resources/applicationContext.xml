@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+	<!-- 使aspectj注解起作用，自动为配置的类生成代理对象 -->
+	<!-- proxy-target-class属性值决定是基于接口的还是基于类的代理被创建。 如果proxy-target-class 属性值被设置为true，那么基于类的代理将起作用（这时需要cglib库） 
+		如果proxy-target-class属值被设置为false或者这个属性被省略，那么标准的JDK 基于接口的代理 -->
+<!-- 	<aop:aspectj-autoproxy proxy-target-class="true" />
+	<context:component-scan base-package="gjb.Aop"></context:component-scan>
+ -->
+
+
+
+
+<!-- 使用xml的配置来实现AOP的注入 -->
+<bean id="loggindAspect" class="gjb.AopForXML.dao.aspect.LoggingAspect"></bean>
+<bean id="messageAspect" class="gjb.AopForXML.dao.aspect.MessageAspect"></bean>
+<bean id="calculatorImpl" class="gjb.AopForXML.dao.impl.CalculatorImpl"></bean>
+
+<aop:config>				  
+	<aop:pointcut expression="execution(* gjb.AopForXML.dao.impl.CalculatorImpl.*(..))" id="pointcut"/>
+	<!-- 配置前置通知 -->
+	<aop:aspect ref="loggindAspect">
+		<aop:before method="befortMethod" pointcut-ref="pointcut"/>
+		<aop:after method="after" pointcut-ref="pointcut"/>
+	</aop:aspect>
+</aop:config>
+
+
+
+</beans>

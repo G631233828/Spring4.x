@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+	<!-- 配置扫描包 
+	base-package 扫描配置的包下所有的文件包括子包 	resource-pattern配置扫描过滤 
+	use-default-filters="true"  需要指定扫描的类型 -->
+	<context:component-scan base-package="gjb.spring4" resource-pattern="autowired/impl/*.class"  use-default-filters="true">
+		<!--排除注释 -->
+		<!--  <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>  -->
+		 <!-- 包含注释 -->
+		 <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+		
+	</context:component-scan>
+
+
+
+
+
+
+
+	<!-- autowire 属性指定自动装配 byName 根据bean的名字和当前bean的setter风格的属性名进行自动装备，若有匹配的，则进行自动装备，若没有匹配的则不装配 
+		byType 根据bean的类型和当前bean的属性的类型进行自动装配（必须是唯一的，不能有相同类型的） bean 的scope属性来配置bean的作用域 
+		singleton:默认值，容器初始化时创建bean实例，在整个容器的生命周期内只创建这一个baan，也是单例。 prototype:原型的。容器初始化时不创建bean的实例。而在每次请求时都创建一个新的Bean实例，并返回 -->
+<!-- 	<bean id="personDao" class="gjb.spring4.autowired.dao.impl.PersonDaoImpl"
+		autowire="default" scope="singleton">
+
+	</bean> -->
+
+
+</beans>
