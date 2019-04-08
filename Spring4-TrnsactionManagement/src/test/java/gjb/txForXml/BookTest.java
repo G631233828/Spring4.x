@@ -1,4 +1,4 @@
-package gjb.tx;
+package gjb.txForXml;
 
 import java.util.Arrays;
 
@@ -17,7 +17,7 @@ public class BookTest {
 	private static BookShopService bookShopService = null;
 	private static CashierService cashierService = null;
 	static {
-		applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+		applicationContext = new ClassPathXmlApplicationContext("applicationContextForXml.xml");
 		bookShopDao = applicationContext.getBean(BookShopDao.class);
 		bookShopService = applicationContext.getBean(BookShopService.class);
 		cashierService = applicationContext.getBean(CashierService.class);

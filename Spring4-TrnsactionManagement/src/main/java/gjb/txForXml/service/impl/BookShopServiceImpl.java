@@ -1,4 +1,4 @@
-package gjb.tx.service.Impl;
+package gjb.txForXml.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,11 +10,16 @@ import gjb.tx.dao.BookShopDao;
 import gjb.tx.exception.UserAccountException;
 import gjb.tx.service.BookShopService;
 
-@Service
 public class BookShopServiceImpl implements BookShopService {
 
-	@Autowired
 	private BookShopDao bookShopDao;
+	public BookShopDao getBookShopDao() {
+		return bookShopDao;
+	}
+	public void setBookShopDao(BookShopDao bookShopDao) {
+		this.bookShopDao = bookShopDao;
+	}
+
 
 	/**
 	 * 添加事务注解@Transactional

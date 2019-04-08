@@ -1,4 +1,4 @@
-package gjb.tx.service;
+package gjb.txForXml.service;
 
 public interface BookShopService {
 

@@ -39,10 +39,13 @@
 		7.nested 如果有事务在运行,当前的方法就应该在这个事务的嵌套事务内运行,否则就启动一个新的事务,并在它自己的事务内运行.
 	 -->
 	<!-- 启用事务注解 -->
-	<tx:annotation-driven transaction-manager="transactionManager"/>
-
-	<!-- <bean id="userDaoImpl" class="gjb.Spring4.JDBCTemplate.dao.Impl.UserDaoImpl">
+	<bean id="bookShopDao" class="gjb.txForXml.dao.impl.BookShopDaoImpl">
 		<property name="jdbcTemplate" ref="jdbcTemplate"></property>
-	</bean> -->
+	</bean>
+	
+	<bean id="bookShopService" class="gjb.txForXml.service.impl.BookShopServiceImpl">
+	<property name="bookShopDao" ref="bookShopDao"></property>
+	</bean>
+	
 
 </beans>
