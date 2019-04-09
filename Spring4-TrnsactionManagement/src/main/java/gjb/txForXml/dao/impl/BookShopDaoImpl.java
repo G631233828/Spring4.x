@@ -1,9 +1,6 @@
 package gjb.txForXml.dao.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.stereotype.Repository;
 
 import gjb.tx.dao.BookShopDao;
 import gjb.tx.exception.BookStockException;

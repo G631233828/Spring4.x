@@ -11,17 +11,15 @@ import gjb.tx.dao.BookShopDao;
 import gjb.tx.service.BookShopService;
 import gjb.tx.service.CashierService;
 
-@Service
 public class CashierServiceImpl implements CashierService {
 
-	@Autowired
 	private BookShopService bookShopService;
-
-
-	/**
-	 * 使用propagation 来指定事务的传播行为
-	 */
-	@Transactional
+	public BookShopService getBookShopService() {
+		return bookShopService;
+	}
+	public void setBookShopService(BookShopService bookShopService) {
+		this.bookShopService = bookShopService;
+	}
 	public void byMoreBook(String username, List<String> listIsbn) {
 		for(String isbn:listIsbn) {
 			this.bookShopService.byBook(username, isbn);

@@ -6,25 +6,31 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import gjb.tx.dao.BookShopDao;
-import gjb.tx.service.BookShopService;
-import gjb.tx.service.CashierService;
+import gjb.txForXml.dao.BookShopDao;
+import gjb.txForXml.dao.impl.BookShopDaoImpl;
+import gjb.txForXml.service.BookShopService;
+import gjb.txForXml.service.CashierService;
+import gjb.txForXml.service.impl.BookShopServiceImpl;
+import gjb.txForXml.service.impl.CashierServiceImpl;
 
 public class BookTest {
 
 	private final static ApplicationContext applicationContext;
-	private static BookShopDao bookShopDao = null;
-	private static BookShopService bookShopService = null;
-	private static CashierService cashierService = null;
+	private static BookShopDaoImpl bookShopDao = null;
+	private static BookShopServiceImpl bookShopService = null;
+	private static CashierServiceImpl cashierService = null;
 	static {
 		applicationContext = new ClassPathXmlApplicationContext("applicationContextForXml.xml");
-		bookShopDao = applicationContext.getBean(BookShopDao.class);
-		bookShopService = applicationContext.getBean(BookShopService.class);
-		cashierService = applicationContext.getBean(CashierService.class);
+		bookShopDao = (BookShopDaoImpl) applicationContext.getBean("bookShopDao");
+		bookShopService = (BookShopServiceImpl) applicationContext.getBean("bookShopService");
+		cashierService = (CashierServiceImpl) applicationContext.getBean("cashierService");
 	}
 
 	@Test
 	public void testfindBookPriceByIsbn() {
+		
+		
+		
 		System.out.println(bookShopDao.findBookPriceByIsbn("1"));
 	}
 
